@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-class Edge implements Comparable<Edge> {
+class Edge2 implements Comparable<Edge2> {
 
     private int distance;
     private int nodeA;
     private int nodeB;
 
-    public Edge(int distance, int nodeA, int nodeB) {
+    public Edge2(int distance, int nodeA, int nodeB) {
         this.distance = distance;
         this.nodeA = nodeA;
         this.nodeB = nodeB;
@@ -30,7 +30,7 @@ class Edge implements Comparable<Edge> {
 
     // 거리(비용)가 짧은 것이 높은 우선순위를 가지도록 설정
     @Override
-    public int compareTo(Edge other) {
+    public int compareTo(Edge2 other) {
         if (this.distance < other.distance) {
             return -1;
         }
@@ -38,14 +38,14 @@ class Edge implements Comparable<Edge> {
     }
 }
 
-public class book10_5 {
+public class book10_8 {
 
     // 노드의 개수(V)와 간선(Union 연산)의 개수(E)
     // 노드의 개수는 최대 100,000개라고 가정
     public static int v, e;
     public static int[] parent = new int[100001]; // 부모 테이블 초기화하기
     // 모든 간선을 담을 리스트와, 최종 비용을 담을 변수
-    public static ArrayList<Edge> Edge = new ArrayList<>();
+    public static ArrayList<Edge2> edge2s = new ArrayList<>();
     public static int result = 0;
 
     // 특정 원소가 속한 집합을 찾기
@@ -79,24 +79,28 @@ public class book10_5 {
             int a = sc.nextInt();
             int b = sc.nextInt();
             int cost = sc.nextInt();
-            Edge.add(new Edge(cost, a, b));
+            edge2s.add(new Edge2(cost, a, b));
         }
 
         // 간선을 비용순으로 정렬
-        Collections.sort(Edge);
+        Collections.sort(edge2s);
 
+
+        int bigCost = 0;
         // 간선을 하나씩 확인하며
-        for (int i = 0; i < Edge.size(); i++) {
-            int cost = Edge.get(i).getDistance();
-            int a = Edge.get(i).getNodeA();
-            int b = Edge.get(i).getNodeB();
+        for (int i = 0; i < edge2s.size(); i++) {
+            int cost = edge2s.get(i).getDistance();
+            int a = edge2s.get(i).getNodeA();
+            int b = edge2s.get(i).getNodeB();
             // 사이클이 발생하지 않는 경우에만 집합에 포함
             if (findParent(a) != findParent(b)) {
                 unionParent(a, b);
                 result += cost;
+                bigCost=cost;
             }
         }
 
-        System.out.println(result);
+
+        System.out.println(result-bigCost);
     }
 }
