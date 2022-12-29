@@ -23,15 +23,18 @@ public class book9_3 {
             Arrays.fill(graph[i], INF);
         }
 
+        //수정
         // 자기 자신에서 자기 자신으로 가는 비용은 0으로 초기화
 //        for (int a = 1; a <= n; a++) {
 //            for (int b = 1; b <= n; b++) {
 //                if (a == b) graph[a][b] = 0;
 //            }
 //        }
-        for (int a = 0; a <= n; a++) {
+
+        for (int a = 1; a <= n; a++) {
             graph[a][a] = 0;
         }
+
 
         // 각 간선에 대한 정보를 입력 받아, 그 값으로 초기화
         for (int i = 0; i < m; i++) {

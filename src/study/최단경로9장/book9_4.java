@@ -29,7 +29,7 @@ public class book9_4 {
 //            }
 //        }
 
-        for (int a = 0; a <= n; a++) {
+        for (int a = 1; a <= n; a++) {
             graph[a][a] = 0;
         }
 

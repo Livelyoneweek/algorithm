@@ -50,10 +50,12 @@ public class book9_5 {
         while(!pq.isEmpty()) { // 큐가 비어있지 않다면
             // 가장 최단 거리가 짧은 노드에 대한 정보 꺼내기
             Node2 node2 = pq.poll();
+
             int dist = node2.getDistance(); // 현재 노드까지의 비용
             int now = node2.getIndex(); // 현재 노드
             // 현재 노드가 이미 처리된 적이 있는 노드라면 무시
             if (d[now] < dist) continue;
+
             // 현재 노드와 연결된 다른 인접한 노드들을 확인
             for (int i = 0; i < graph.get(now).size(); i++) {
                 int cost = d[now] + graph.get(now).get(i).getDistance();
