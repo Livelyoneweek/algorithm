@@ -23,7 +23,7 @@ class Nodes implements Comparable<Nodes> {
         return this.distance;
     }
 
-    // 거리(비용)가 짧은 것이 높은 우선순위를 가지도록 설정
+    // 거리(비용)가 짧은 것이 높은 우선순위를 가지도록 설정, 오름차순
     @Override
     public int compareTo(Nodes other) {
         if (this.distance < other.distance) {

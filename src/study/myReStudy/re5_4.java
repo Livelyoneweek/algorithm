@@ -12,5 +12,6 @@ public class re5_4 {
 
     public static void main(String[] args) {
         recursiveFunction(1);
+
     }
 }

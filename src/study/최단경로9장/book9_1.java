@@ -30,7 +30,7 @@ public class book9_1 {
     // 노드의 개수는 최대 100,000개라고 가정
     public static int n, m, start;
     // 각 노드에 연결되어 있는 노드에 대한 정보를 담는 배열
-    public static ArrayList<ArrayList<Nodes>> graph = new ArrayList<ArrayList<Nodes>>();
+    public static ArrayList<ArrayList<Node>> graph = new ArrayList<ArrayList<Node>>();
     // 방문한 적이 있는지 체크하는 목적의 배열 만들기
     public static boolean[] visited = new boolean[100001];
     // 최단 거리 테이블 만들기
@@ -81,7 +81,7 @@ public class book9_1 {
 
         // 그래프 초기화
         for (int i = 0; i <= n; i++) {
-            graph.add(new ArrayList<Nodes>());
+            graph.add(new ArrayList<Node>());
         }
 
         // 모든 간선 정보를 입력받기
@@ -90,7 +90,7 @@ public class book9_1 {
             int b = sc.nextInt();
             int c = sc.nextInt();
             // a번 노드에서 b번 노드로 가는 비용이 c라는 의미
-            graph.get(a).add(new Nodes(b, c));
+            graph.get(a).add(new Node(b, c));
         }
 
         // 최단 거리 테이블을 모두 무한으로 초기화
@@ -103,11 +103,11 @@ public class book9_1 {
         for (int i = 1; i <= n; i++) {
             // 도달할 수 없는 경우, 무한(INFINITY)이라고 출력
             if (d[i] == INF) {
-                System.out.println("INFINITY");
+                System.out.println(i + "=INFINITY");
             }
             // 도달할 수 있는 경우 거리를 출력
             else {
-                System.out.println(d[i]);
+                System.out.println(i+"="+d[i]);
             }
         }
     }
