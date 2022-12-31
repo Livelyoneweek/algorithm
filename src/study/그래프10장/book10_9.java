@@ -40,10 +40,10 @@ public class book10_9 {
             int now = q.poll();
             // 해당 원소와 연결된 노드들의 진입차수에서 1 빼기
             for (int i = 0; i < graph.get(now).size(); i++) {
+                result[graph.get(now).get(i)] += times[now];
 //                result[graph.get(now).get(i)] = Math.max(result[graph.get(now).get(i)], result[now] + times[graph.get(now).get(i)]);
-                result[graph.get(now).get(i)] =result[now] + times[graph.get(now).get(i)];
                 indegree[graph.get(now).get(i)] -= 1;
-                // 새롭게 진입차수가 0이 되는 노드를 큐에 삽입
+                // 새롭게 진입차수가 0이 되는 노드를 큐에 삽입  p
                 if (indegree[graph.get(now).get(i)] == 0) {
                     q.offer(graph.get(now).get(i));
                 }
@@ -81,6 +81,7 @@ public class book10_9 {
                 graph.get(x).add(i);
             }
         }
+        sc.close();
 
         topologySort();
     }

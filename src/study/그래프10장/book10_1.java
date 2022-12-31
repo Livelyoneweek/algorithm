@@ -13,6 +13,7 @@ public class book10_1 {
     public static int findParent(int x) {
         // 루트 노드가 아니라면, 루트 노드를 찾을 때까지 재귀적으로 호출
         if (x == parent[x]) return x;
+
         return findParent(parent[x]);
     }
 
